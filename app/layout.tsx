@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+"react-dnd-html5-backend";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

@@ -10,7 +10,6 @@ import {
   HiOutlineUsers,
 } from "react-icons/hi";
 import { IoCloseSharp } from "react-icons/io5";
-import { IoMdCalendar } from "react-icons/io";
 import { FiClock } from "react-icons/fi";
 import AddTime from "./add-time";
 import { createEvent } from "@/app/actions/event-actions";

@@ -30,7 +30,7 @@ export default function MainView({
     setEvents,
   } = useEventStore();
   const { userSelectedDate } = useDateStore();
-  const { goal } = useGoalTaskStore();
+   // Either use this or remove it
 
   useEffect(() => {
     const mappedEvents: CalendarEventType[] = eventsData.map((event) => ({
@@ -38,8 +38,7 @@ export default function MainView({
       date: dayjs(event.date),
       title: event.title,
       description: event.description,
-      goal: event.goal, // Add goal field if it exists
-      
+      goal: event.goal,
     }));
 
     setEvents(mappedEvents);
@@ -70,6 +69,7 @@ export default function MainView({
           isOpen={isEventSummaryOpen}
           onClose={closeEventSummary}
           event={selectedEvent}
+          
         />
       )}
     </div>

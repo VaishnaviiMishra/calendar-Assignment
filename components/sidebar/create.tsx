@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useDateStore } from "@/lib/store";
 import { useCallback, useState } from "react";
-
+import Image from "next/image";
 import EventPopover from "../event-popover";
 
 export default function Create() {
@@ -30,7 +30,7 @@ export default function Create() {
   className="w-[150px] justify-start rounded-full py-6 shadow"
   onClick={handleOpenPopover}
 >
-  <img 
+  <Image
     src="img/addicon.png"
     width={32} 
     alt="Create" 
