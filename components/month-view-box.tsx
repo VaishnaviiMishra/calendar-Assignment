@@ -81,7 +81,7 @@ export default function MonthViewBox({
   
       {/* Current day indicator */}
       {isToday && (
-        <div className="absolute right-2 top-2 h-2 w-2 rounded-full bg-pink-500"></div>
+        <div className="absolute right-2 top-2 h-1 w-1 rounded-full bg-pink-100"></div>
       )}
   
       {/* Goal indicator badge */}

@@ -37,16 +37,17 @@ export type TaskType = {
   date: dayjs.Dayjs;
   completed: boolean;
 };
-
 type GoalTaskStore = {
   goal: GoalType[];
   tasks: TaskType[];
+  calendars: CalendarItem[];
   selectedGoal: string | null;
   addGoal: (goal: Omit<GoalType, 'id'>) => void;
   toggleGoal: (id: string) => void;
   addTask: (task: Omit<TaskType, 'id'>) => void;
   toggleTask: (id: string) => void;
   selectGoal: (id: string | null) => void;
+  toggleCalendar: (id: string) => void;
 };
 
 type EventStore = {
@@ -62,7 +63,12 @@ type EventStore = {
   updateEventDate: (id: string, newDate: Date) => void; // New method
 };
 
-
+export type CalendarItem = {
+  id: string;
+  title: string;
+  color: string;
+  visible: boolean;
+};
 
 interface ToggleSideBarType {
   isSideBarOpen: boolean;
@@ -135,31 +141,55 @@ export const useToggleSideBarStore = create<ToggleSideBarType>()(
 );
 
 
-export const useGoalTaskStore = create<GoalTaskStore>((set) => ({
-  goal: [
-    { id: 'goal1', title: 'Career Development', completed: false, color: 'bg-blue-500' },
-    { id: 'goal2', title: 'Health & Fitness', completed: false, color: 'bg-green-500' },
-  ],
-  tasks: [
-    { id: 'task1', goal: 'goal1', title: 'Complete React course', date: dayjs(), completed: false },
-    { id: 'task2', goal: 'goal2', title: 'Gym session', date: dayjs(), completed: false },
-  ],
-  selectedGoal: null,
-  addGoal: (goal) => set((state) => ({ 
-    goal: [...state.goal, { ...goal, id: `goal${state.goal.length + 1}` }] 
-  })),
-  toggleGoal: (id) => set((state) => ({
-    goal: state.goal.map(g => 
-      g.id === id ? { ...g, completed: !g.completed } : g
+  export const useGoalTaskStore = create<GoalTaskStore>()(
+    devtools(
+      persist(
+        (set) => ({
+          goal: [
+            { id: 'goal1', title: 'Exercise', completed: false, color: 'bg-blue-500' },
+            { id: 'goal2', title: 'Work', completed: false, color: 'bg-green-500' },
+            { id: 'goal3', title: 'Eat', completed: false, color: 'bg-blue-500' },
+            { id: 'goal4', title: 'Relax', completed: false, color: 'bg-green-500' },
+            { id: 'goal5', title: 'Family', completed: false, color: 'bg-blue-500' },
+            { id: 'goal6', title: 'Friends', completed: false, color: 'bg-green-500' },
+          ],
+          tasks: [
+            { id: 'task1', goal: 'goal1', title: 'Complete React course', date: dayjs(), completed: false },
+            { id: 'task2', goal: 'goal2', title: 'Gym session', date: dayjs(), completed: false },
+          ],
+          calendars: [
+            { id: "cal1", title: "Work", color: "bg-rose-500", visible: true },
+            { id: "cal2", title: "Personal", color: "bg-fuchsia-500", visible: true },
+            { id: "cal3", title: "Fitness", color: "bg-pink-400", visible: true },
+          ],
+          selectedGoal: null,
+          addGoal: (goal) => set((state) => ({ 
+            goal: [...state.goal, { ...goal, id: `goal${state.goal.length + 1}` }] 
+          })),
+          toggleGoal: (id) => set((state) => ({
+            goal: state.goal.map(g => 
+              g.id === id ? { ...g, completed: !g.completed } : g
+            )
+          })),
+          addTask: (task) => set((state) => ({ 
+            tasks: [...state.tasks, { ...task, id: `task${state.tasks.length + 1}` }] 
+          })),
+          toggleTask: (id) => set((state) => ({
+            tasks: state.tasks.map(t => 
+              t.id === id ? { ...t, completed: !t.completed } : t
+            )
+          })),
+          selectGoal: (id) => set({ selectedGoal: id }),
+          toggleCalendar: (id) => set((state) => ({
+            calendars: state.calendars.map(cal => 
+              cal.id === id ? { ...cal, visible: !cal.visible } : cal
+            )
+          })),
+        }),
+        { 
+          name: "goal_task_store",
+          skipHydration: true 
+        }
+      )
     )
-  })),
-  addTask: (task) => set((state) => ({ 
-    tasks: [...state.tasks, { ...task, id: `task${state.tasks.length + 1}` }] 
-  })),
-  toggleTask: (id) => set((state) => ({
-    tasks: state.tasks.map(t => 
-      t.id === id ? { ...t, completed: !t.completed } : t
-    )
-  })),
-  selectGoal: (id) => set({ selectedGoal: id }),
-}));
+  );
