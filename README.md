@@ -1,19 +1,21 @@
-# Google Calendar Clone
+# Calender Assignment
 
- <img src="/gcclone.png" alt="project-Img" />
+![Screenshot 2025-04-12 211208](https://github.com/user-attachments/assets/67c25239-b29b-4c8a-b187-f8498ccfdd13)
 
-## <a href="https://www.youtube.com/watch?v=fBJgzK9DV64">YouTube Video</a>
+A fully functional task and event management application with drag-and-drop support, filtering, and event detail tracking — built using modern web technologies.
 
-Google Calendar clone using Next.js, React, Day.js, Neon Postgres, and Drizzle ORM. Learn how to work with dates efficiently, create and save events, and manage your data using a modern tech stack.
+🔗 [View Live Site]([https://your-vercel-url.vercel.app](https://calendar-assignment-12k9.vercel.app/))  
 
-- Add Events
-- See Month , Week & DAy Views
+💻 [GitHub Repository]([https://github.com/your-username/your-repo](https://github.com/VaishnaviiMishra/calendar-Assignment))
 
-### Tech Stack
+  Tech Stack
 
-- Reactjs
-- Nextjs
-- Shadcn UI
-- Tailwindcss
-- Neon/Postgresql DB
-- Drizzle ORM
+- Frontend: Next.js, React, TypeScript
+- UI: shadcn/ui, Tailwind CSS
+- State Management: Redux
+- Backend: Next.js API Routes
+- Database: Neon PostgreSQL (serverless)
+
+
+
+
