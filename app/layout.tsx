@@ -17,11 +17,6 @@ const geistMono = localFont({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Google Calendar Clone",
-  description: "Making Scheduling possible",
-  themeColor: "#f9a8d4",
-};
 
 export default function RootLayout({
   children,

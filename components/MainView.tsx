@@ -4,7 +4,6 @@ import {
   useDateStore,
   useEventStore,
   useViewStore,
-  useGoalTaskStore,
 } from "@/lib/store";
 import MonthView from "./month-view";
 import SideBar from "./sidebar/SideBar";
